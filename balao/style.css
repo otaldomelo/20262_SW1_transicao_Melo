@@ -1,0 +1,240 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Cenário */
+.cenario {
+    width: 100%;
+    height: 100vh;
+
+    position: relative;
+    overflow: hidden;
+
+    background: linear-gradient(
+        to bottom,
+        #4facfe,
+        #00c6ff,
+        #87ceeb
+    );
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    color: white;
+}
+
+h1 {
+    margin-top: 40px;
+    font-size: 40px;
+
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+
+    z-index: 10;
+}
+
+p {
+    margin-top: 10px;
+    font-size: 18px;
+
+    z-index: 10;
+}
+
+/* Balão */
+.balao {
+    position: absolute;
+
+    width: 100px;
+    height: 120px;
+
+    background: linear-gradient(
+        135deg,
+        #ff7675,
+        #d63031
+    );
+
+    border-radius: 50% 50% 45% 45%;
+
+    bottom: -150px;
+
+    animation: subir 8s linear infinite;
+
+    box-shadow:
+        inset -15px -10px 20px rgba(0, 0, 0, 0.2),
+        5px 10px 20px rgba(0, 0, 0, 0.2);
+
+    z-index: 5;
+}
+
+/* Parte inferior do balão */
+.balao::after {
+    content: "";
+
+    position: absolute;
+
+    bottom: -10px;
+    left: 42px;
+
+    width: 0;
+    height: 0;
+
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 15px solid #d63031;
+}
+
+/* Brilho */
+.brilho {
+    position: absolute;
+
+    width: 20px;
+    height: 35px;
+
+    background: rgba(255, 255, 255, 0.5);
+
+    border-radius: 50%;
+
+    top: 20px;
+    left: 20px;
+
+    transform: rotate(25deg);
+}
+
+/* Corda */
+.corda {
+    position: absolute;
+
+    width: 2px;
+    height: 100px;
+
+    background-color: #555;
+
+    bottom: -245px;
+
+    animation: cordaSubir 8s linear infinite;
+
+    z-index: 4;
+}
+
+/* Animação principal */
+@keyframes subir {
+
+    0% {
+        transform: translateY(0) rotate(-5deg);
+    }
+
+    25% {
+        transform: translateY(-25vh) rotate(5deg);
+    }
+
+    50% {
+        transform: translateY(-50vh) rotate(-5deg);
+    }
+
+    75% {
+        transform: translateY(-75vh) rotate(5deg);
+    }
+
+    100% {
+        transform: translateY(-120vh) rotate(-5deg);
+    }
+
+}
+
+/* Animação da corda */
+@keyframes cordaSubir {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-120vh);
+    }
+
+}
+
+/* Nuvens */
+.nuvem {
+    position: absolute;
+
+    width: 180px;
+    height: 60px;
+
+    background: rgba(255, 255, 255, 0.8);
+
+    border-radius: 50px;
+
+    filter: blur(1px);
+}
+
+.nuvem::before,
+.nuvem::after {
+    content: "";
+
+    position: absolute;
+
+    background: rgba(255, 255, 255, 0.8);
+
+    border-radius: 50%;
+}
+
+.nuvem::before {
+    width: 80px;
+    height: 80px;
+
+    top: -35px;
+    left: 30px;
+}
+
+.nuvem::after {
+    width: 100px;
+    height: 100px;
+
+    top: -50px;
+    right: 20px;
+}
+
+.nuvem1 {
+    top: 25%;
+    left: -100px;
+}
+
+.nuvem2 {
+    top: 50%;
+    right: -120px;
+
+    transform: scale(0.8);
+}
+
+.nuvem3 {
+    top: 75%;
+    left: 10%;
+
+    transform: scale(0.6);
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+
+    h1 {
+        font-size: 30px;
+    }
+
+    p {
+        font-size: 15px;
+    }
+
+    .balao {
+        width: 80px;
+        height: 100px;
+    }
+
+}

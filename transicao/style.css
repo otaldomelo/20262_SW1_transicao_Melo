@@ -1,0 +1,174 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #141e30, #243b55);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.descricao {
+    color: #d8d8d8;
+    margin-bottom: 40px;
+}
+
+/* Área das cartas */
+.cartas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* Container da carta */
+.carta {
+    width: 200px;
+    height: 280px;
+    perspective: 1000px;
+}
+
+/* Elemento responsável pela rotação */
+.carta-conteudo {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    transform-style: preserve-3d;
+
+    transition: transform 0.8s ease;
+}
+
+/* Classe adicionada pelo JavaScript */
+.carta-conteudo.virada {
+    transform: rotateY(180deg);
+}
+
+/* Frente e verso */
+.frente,
+.verso {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    backface-visibility: hidden;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Frente */
+.frente {
+    background: linear-gradient(145deg, #ffffff, #dcdcdc);
+    color: #222;
+}
+
+/* Verso */
+.verso {
+    background: linear-gradient(145deg, #e63946, #8b0000);
+    color: white;
+
+    transform: rotateY(180deg);
+}
+
+.simbolo {
+    font-size: 60px;
+    margin-bottom: 20px;
+}
+
+.frente h2,
+.verso h2 {
+    margin-bottom: 10px;
+}
+
+.frente p,
+.verso p {
+    font-size: 16px;
+}
+
+/* Botões */
+.botoes {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+button {
+    border: none;
+    padding: 14px 30px;
+
+    font-size: 17px;
+    font-weight: bold;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+#virar {
+    background-color: #00b894;
+    color: white;
+}
+
+#desvirar {
+    background-color: #0984e3;
+    color: white;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.1);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Responsividade */
+@media (max-width: 700px) {
+
+    h1 {
+        font-size: 30px;
+    }
+
+    .cartas {
+        gap: 20px;
+    }
+
+    .carta {
+        width: 160px;
+        height: 230px;
+    }
+
+    .simbolo {
+        font-size: 45px;
+    }
+
+}
